@@ -2,6 +2,7 @@ package edu.tictactoe;
 
 import java.util.Scanner;
 
+import edu.tictactoe.controller.PlayerInput;
 import edu.tictactoe.model.GameBoard;
 import edu.tictactoe.view.BoardCLI;
 
@@ -21,7 +22,7 @@ public class Game {
 			
 			BoardCLI.logBoard(gBoard);
 			System.out.printf("Play: ");
-			String str =sc.nextLine();
+			PlayerInput.capture(sc);
 			BoardCLI.clear();
 			++rounds;
 		}while(playing);
