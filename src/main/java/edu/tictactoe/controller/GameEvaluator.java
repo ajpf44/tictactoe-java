@@ -1,5 +1,7 @@
 package edu.tictactoe.controller;
 
+
+
 import edu.tictactoe.model.GameBoard;
 
 
@@ -8,18 +10,34 @@ import edu.tictactoe.model.GameBoard;
  * */
 public class GameEvaluator {
 
-	public static String isFinished(GameBoard board) {
+	public static int isFinished(GameBoard board) {
 		
 		int[][] gMatrix = board.getBoard();
 		
 		//verify lines for a winner;
 		for(int i = 0; i < gMatrix.length; ++i) {
+			int lineProd = 1;
 			for(int j =0; j < gMatrix[i].length; ++j) {
-				System.out.printf("%d", gMatrix[i][j]);
+				lineProd *= gMatrix[i][j];
 			}
-			System.out.println();
+			if(lineProd == 1 || lineProd == 8) {
+				System.out.println("Existe um ganhador");
+				return (int) Math.cbrt(lineProd);
+			}
 		}
 		
-		return "";
+		//verify columns
+		for(int i = 0; i < gMatrix.length; ++i) {
+			int columnProd = 0;
+			for(int j =0; j < gMatrix.length; ++j) {
+				columnProd *= gMatrix[j][i];
+			}
+			if(columnProd == 1 || columnProd == 8) {
+				System.out.println("Existe um ganhador");
+				return (int) Math.cbrt(columnProd);
+			}
+		}
+		
+		return -1;
 	}
 }

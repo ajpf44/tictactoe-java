@@ -28,7 +28,7 @@ public class Game {
 			boolean wasUpdated = gBoard.update(m.getI(), m.getJ(), playerRound);
 			GameEvaluator.isFinished(gBoard);
 			sc.nextLine();
-			sc.nextLine();
+			
 			if( ! wasUpdated) {
 				System.out.println("Error updating board");
 			} else {
