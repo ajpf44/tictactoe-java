@@ -26,7 +26,10 @@ public class Game {
 			System.out.printf("Play: ");
 			Move m = PlayerInput.capture(sc);
 			boolean wasUpdated = gBoard.update(m.getI(), m.getJ(), playerRound);
+			
+			BoardCLI.logMatrix(gBoard);
 			GameEvaluator.isFinished(gBoard);
+			
 			sc.nextLine();
 			
 			if( ! wasUpdated) {

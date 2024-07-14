@@ -27,6 +27,17 @@ public class BoardCLI {
 		}
 	}
 	
+	public static void logMatrix(GameBoard gBoard) {
+		int[][] matrixBoard = gBoard.getBoard(); 
+		
+		for(int i =0;i < matrixBoard.length; ++i) {
+			for(int j =0; j < matrixBoard[i].length; ++i) {
+				System.out.printf("%d", matrixBoard[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
 	private static String boardChar(int mark) {
 		if(mark == 0) return " ";
 		if(mark == 1) return "X";
