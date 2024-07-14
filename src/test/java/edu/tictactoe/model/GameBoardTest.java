@@ -8,11 +8,10 @@ public class GameBoardTest {
 	@Test
 	void testUpdate() {
 		GameBoard gb = new GameBoard();
-		Player p = new Player("X",1 );
-		gb.update(0, 0, p.getId());
+		gb.update(0, 0, 1);
 		
 		int[][] expectedBoard = new int[3][3];
-		expectedBoard[0][0] = p.getId();
+		expectedBoard[0][0] = 1;
 		
 		Assertions.assertArrayEquals(expectedBoard, gb.getBoard());
 	}

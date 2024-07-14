@@ -2,8 +2,10 @@ package edu.tictactoe;
 
 import java.util.Scanner;
 
+import edu.tictactoe.controller.GameEvaluator;
 import edu.tictactoe.controller.PlayerInput;
 import edu.tictactoe.model.GameBoard;
+import edu.tictactoe.model.Move;
 import edu.tictactoe.view.BoardCLI;
 
 public class Game {
@@ -15,16 +17,27 @@ public class Game {
 		GameBoard gBoard = new GameBoard();
 		
 		BoardCLI.logGreetingsMsg();
-		int rounds = 0;
+		int rounds = 1;
+		int playerRound = 1; 
 		do{
 			System.out.println("Round " + rounds);
-			System.out.println("Player n round: ");
-			
+			System.out.printf("Player %d round: \n", playerRound);
 			BoardCLI.logBoard(gBoard);
 			System.out.printf("Play: ");
-			PlayerInput.capture(sc);
-			BoardCLI.clear();
+			Move m = PlayerInput.capture(sc);
+			boolean wasUpdated = gBoard.update(m.getI(), m.getJ(), playerRound);
+			GameEvaluator.isFinished(gBoard);
+			sc.nextLine();
+			sc.nextLine();
+			if( ! wasUpdated) {
+				System.out.println("Error updating board");
+			} else {
+				System.out.println("Board updated");
+			}
+			playerRound = rounds%2 + 1;
 			++rounds;
+			
+			BoardCLI.clear();
 		}while(playing);
 		
 		sc.close();
