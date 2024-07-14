@@ -9,7 +9,10 @@ public class PlayerInput {
 		String input = sc.nextLine();
 		
 		if(! validateInput(input)) {
-			throw new IllegalArgumentException("Input it's not valid");
+			//throw new IllegalArgumentException("Input it's not valid");
+			System.out.println("Input it's not valid");
+			System.out.printf("Play: ");
+			return capture(sc);
 		}
 		
 		Move move = getMoveFromInput(input.trim());

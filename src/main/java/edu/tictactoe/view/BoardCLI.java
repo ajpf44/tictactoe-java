@@ -31,7 +31,7 @@ public class BoardCLI {
 		int[][] matrixBoard = gBoard.getBoard(); 
 		
 		for(int i =0;i < matrixBoard.length; ++i) {
-			for(int j =0; j < matrixBoard[i].length; ++i) {
+			for(int j =0; j < matrixBoard.length; ++j) {
 				System.out.printf("%d", matrixBoard[i][j]);
 			}
 			System.out.println();
